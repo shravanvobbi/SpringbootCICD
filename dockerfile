@@ -1,6 +1,6 @@
 FROM centos7
 
-MAINTAINER Chenna Vemula <chennarao.py@gmail.com>
+MAINTAINER Shravan Vobbilisetty <vshravan818@gmail.com>
 
 EXPOSE 8080
 
@@ -10,15 +10,15 @@ RUN yum install -y wget \
         yum install -y java-1.8.0-openjdk-headless \
         yum clean all
 
-RUN mkdir /projectname        
+RUN mkdir /SpringbootCICD        
 
 # Add jar file from jenkins workspace or from S3/Artifactory
 
-ADD projectname-1.0.jar /projectname
+ADD dockerproject-1.0.jar /SpringbootCICD
 
-WORKDIR /projectname
+WORKDIR /SpringbootCICD
 
-RUN chown -R 1001:1001 /projectname
+RUN chown -R 1001:1001 /SpringbootCICD
 
 USER 1001
 
@@ -27,5 +27,5 @@ USER 1001
 #ENTRYPOINT exec java $JAVA_OPTS -jar /projectname//projectname-1.0.jar
 
 
-CMD ["java","-jar","/projectname-1.0.jar"]
+CMD ["java","-jar","/SpringbootCICD-1.0.jar"]
 
